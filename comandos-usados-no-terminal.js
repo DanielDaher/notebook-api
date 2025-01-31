@@ -10,3 +10,10 @@
 
 // http://localhost:3000/rails/info/routes (no navegador, para acessar as rotas)
 
+// rails g task dev setup (para criar tasks - que são parecidos com scripts do package json node.js)
+
+// rails dev:<nome-da-task(que no caso é setup)> (para rodar o script que está no arquivo dev.rake)
+
+// acessar http://localhost:3000/contacts (para ver os contatos gerados nessa task citada acima)
+
+
