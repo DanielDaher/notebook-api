@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
 
-    render json: @contacts
+    render json: @contacts # caso quisesse um status específico, por exemplo, o no_content, bastaria passar ,status: :no_content (checar https://httpstatuses.io/)
   end
 
   # GET /contacts/1
