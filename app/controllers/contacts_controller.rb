@@ -1,11 +1,21 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: %i[ show update destroy ]
 
+  # CONTACT_JSON_ATTRIBUTES = [:name, :email].freeze // freeze é para tornar o array imutável
+
   # GET /contacts
   def index
     @contacts = Contact.all
 
-    render json: @contacts # caso quisesse um status específico, por exemplo, o no_content, bastaria passar ,status: :no_content (checar https://httpstatuses.io/)
+    render json: @contacts, only: [:name, :email] # only está selecionando apenas alguns campos para retornar.
+
+    ## Também é possível utilizar expecpt: [:name, :email] para selecionar tudo exceto esses campos.
+
+    ## Caso prefira, pode salvar numa variável, pro código ficar mais limpo, como no exemplo a seguir:
+
+    ## render json: @contacts, only: CONTACT_JSON_ATTRIBUTES
+
+    # caso quisesse um status específico, por exemplo, o no_content, bastaria passar ,status: :no_content (checar https://httpstatuses.io/)
   end
 
   # GET /contacts/1
