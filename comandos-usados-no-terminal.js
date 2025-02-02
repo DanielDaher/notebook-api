@@ -16,4 +16,16 @@
 
 // acessar http://localhost:3000/contacts (para ver os contatos gerados nessa task citada acima)
 
+// rails g scaffold Kind description:string
+
+// rails g migration add_kind_to_contact kind:references (para adicionar o campo kind_id na tabela Contact, referenciando-o com a tabela Kind)
+
+// rails db:migrate para enviar as alterações acima ao banco de dados
+// (
+//    CASO DÊ ERRO:
+//      rails db:migrate:down VERSION=20250202220907 (para derrubar a última migration)
+// 
+//      rails db:drop db:create db:migrate dev:setup (para RESETAR o banco de dados)
+// )
+
 
