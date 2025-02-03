@@ -20,7 +20,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts/1
   def show
-    render json: @contact.attributes.merge({ author: 'Daniel' }) # para adicionar uma nova propriedade ao retorno. 
+    render json: @contact
     #Pode ser usada com map também, caso tenha array na resposta. Exemplo: @contact.map { |contact| contact.attributes.merge({ author: 'Daniel' }) }
 
     # Também é possível mergear chamando um método, definido na model contact.rb
