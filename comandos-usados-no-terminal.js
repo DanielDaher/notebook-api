@@ -28,4 +28,7 @@
 //      rails db:drop db:create db:migrate dev:setup (para RESETAR o banco de dados)
 // )
 
+// rails g model Phone number:string contact:references (Para gerar a model phone)
+// rails db:drop db:create db:migrate dev:setup (para RESETAR o banco de dados e popular o setup de phones)
+
 
