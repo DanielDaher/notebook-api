@@ -2,7 +2,7 @@ class Contact < ApplicationRecord
   belongs_to :kind, optional: true #optional: true faz com que kind_id não seja obrigatório no método POST de contacts
   has_many :phones
   has_one :address
-  accepts_nested_attributes_for :address, :update_only: true #address no singular pois é has_one. Se fosse has_many, como é phones, seria no plural.
+  accepts_nested_attributes_for :address, update_only: true # address no singular pois é has_one. Se fosse has_many, como é phones, seria no plural. 
   # Já o UPDATE_ONLY é para, no método PATCH/PUT, ao invés de cadastrar mais um endereço e sobrescrever a associação, atualiza o único que foi criado
 
   accepts_nested_attributes_for :phones, allow_destroy: true # aceita atributos de phones durante cadastro de contatos. (também permite deletar o elemento, passando _destroy no parametro)
