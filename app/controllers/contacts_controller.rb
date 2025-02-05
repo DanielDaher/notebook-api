@@ -60,6 +60,12 @@ class ContactsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def contact_params
-      params.expect(contact: [ :name, :email, :birthdate, :kind_id ])
+      params.require(:contact).permit(
+        :name,
+        :email,
+        :birthdate,
+        :kind_id,
+        phones_attributes: [:id, :number, :_destroy] # aqui libera tanto o param phones_attributes, quanto as propriedades NESTED id, _destroy e number dentro dele
+      )
     end
 end
