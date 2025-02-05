@@ -33,5 +33,6 @@
 
 // rails g model Address street:string city:string contact:references (para gerar a model address com referencia a model Contact)
 
+// descomentar, em Gemfile, a gem "rack-cors", rodar bundle install, descomentar em cors.rb o código e trocar a origin por asterisco (Isso tudo é para habilitar o CORS, permitindo que outros acessem a API)
 
 
