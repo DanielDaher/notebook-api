@@ -31,4 +31,7 @@
 // rails g model Phone number:string contact:references (Para gerar a model phone)
 // rails db:drop db:create db:migrate dev:setup (para RESETAR o banco de dados e popular o setup de phones)
 
+// rails g model Address street:string city:string contact:references (para gerar a model address com referencia a model Contact)
+
+
 

@@ -1,6 +1,8 @@
 class Contact < ApplicationRecord
   belongs_to :kind, optional: true #optional: true faz com que kind_id não seja obrigatório no método POST de contacts
   has_many :phones
+  has_one :address
+  accepts_nested_attributes_for :address #address no singular pois é has_one. Se fosse has_many, como é phones, seria no plural.
   accepts_nested_attributes_for :phones, allow_destroy: true # aceita atributos de phones durante cadastro de contatos. (também permite deletar o elemento, passando _destroy no parametro)
   # Por padrão, o atributo seria phones_attributes: [{ number: '1234' }], por exemplo.
 

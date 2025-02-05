@@ -1,6 +1,8 @@
 namespace :dev do
   desc "Configura o ambiente de desenvolvimento"
   task setup: :environment do
+    %x(rails db:drop db:create db:migrate) ## ESSA LINHA DE COMANDO SERÁ EXECUTADA TODA VEZ QUE RODAR rails dev:setup no terminal
+
     puts "Cadastrando tipos de contatos..."
 
     kinds = %w(Amigo Comercial Conhecido) # são três tipos: Amigo, Comercial e Conhecido
@@ -47,6 +49,18 @@ namespace :dev do
     end
 
     puts "Telefones cadastrados com sucesso"
+
+    puts "Cadastrando endereços..."
+
+    Contact.all.each do |contact|
+      address = Address.create(
+        street: Faker::Address.street_address,
+        city: Faker::Address.city,
+        contact: contact
+      )
+    end
+
+    puts "Endereços cadastrados com sucesso"
 
   end
 end
