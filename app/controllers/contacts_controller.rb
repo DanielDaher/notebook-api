@@ -60,11 +60,12 @@ class ContactsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def contact_params
-      params.require(:contact).permit(
+      params.require(:contact).permit( # o :contact faz com que, nas requisições, seja necessário encapsular os JSON com a chave contact
         :name,
         :email,
         :birthdate,
         :kind_id,
+        address_attributes: [:id, :street, :city],
         phones_attributes: [:id, :number, :_destroy] # aqui libera tanto o param phones_attributes, quanto as propriedades NESTED id, _destroy e number dentro dele
       )
     end
