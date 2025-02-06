@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+
   before_action :set_contact, only: %i[ show update destroy ]
 
   # CONTACT_JSON_ATTRIBUTES = [:name, :email].freeze // freeze é para tornar o array imutável
@@ -34,7 +35,8 @@ class ContactsController < ApplicationController
     if @contact.save
       render json: @contact, status: :created, location: @contact
     else
-      render json: @contact.errors, status: :unprocessable_entity
+      # render json: @contact.errors, status: :unprocessable_entity
+      render json: ErrorSerializer.serialize(@contact.errors)
     end
   end
 
@@ -43,7 +45,8 @@ class ContactsController < ApplicationController
     if @contact.update(contact_params)
       render json: @contact
     else
-      render json: @contact.errors, status: :unprocessable_entity
+      # render json: @contact.errors, status: :unprocessable_entity
+      render json: ErrorSerializer.serialize(@contact.errors)
     end
   end
 
