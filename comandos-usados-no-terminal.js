@@ -36,3 +36,18 @@
 // descomentar, em Gemfile, a gem "rack-cors", rodar bundle install, descomentar em cors.rb o código e trocar a origin por asterisco (Isso tudo é para habilitar o CORS, permitindo que outros acessem a API)
 
 
+
+// JWT
+
+// Adicionar, no Gemfile, a gem 'jwt' (ou instalar pelo terminal)
+
+// rails g controller auths (para gerar um controller chamado auths)
+
+// criar, em routes.rb, a rota para auths
+
+// configurar nos controllers (tanto o auths_controller quanto os demais onde queira autenticar) o encode e decode
+// (no exemplo deste commit, fiz no kinds_controller)
+
+// uma vez configurado, é possível fazer login e, ao fazer requisições no controller,
+// passar os headers Accept '*/* e Authorization (neste, colocarar Bearer token, com token sendo o token gerado no login)
+

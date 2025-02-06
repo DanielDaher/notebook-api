@@ -1,5 +1,8 @@
 class KindsController < ApplicationController
+  before_action :authenticate
   before_action :set_kind, only: %i[ show update destroy ]
+
+  include ActionController::HttpAuthentication::Token::ControllerMethods ## importante importar isso aqui para autenticação funcionar
 
   # GET /kinds
   def index
@@ -47,5 +50,17 @@ class KindsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def kind_params
       params.expect(kind: [ :description ])
+    end
+
+    def authenticate
+      authenticate_or_request_with_http_token do |token, options|
+        hmac_secret = 'my$ecretK3y'
+        begin
+          decoded_token = JWT.decode(token, hmac_secret, true, { algorithm: 'HS256' })
+          # render json: { decoded: decoded_token[0] } ISSO AQUI RETORNA O PAYLOAD DO TOKEN
+        rescue JWT::DecodeError
+          render json: { error: 'Unauthorized' }, status: :unauthorized
+        end
+      end
     end
 end
