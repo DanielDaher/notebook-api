@@ -15,6 +15,9 @@ gem "puma", ">= 5.0"
 # A pure ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT)
 gem 'jwt'
 
+#A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
+gem 'kaminari'
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 

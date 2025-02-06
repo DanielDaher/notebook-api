@@ -6,7 +6,11 @@ class KindsController < ApplicationController
 
   # GET /kinds
   def index
-    @kinds = Kind.all
+    page_number = params.dig(:page, :number)&.to_i || 1
+    per_page = params.dig(:size, :number)&.to_i || 1
+    puts "page_number: #{page_number}, per_page: #{per_page}"
+
+    @kinds = Kind.all.page(page_number).per(per_page)
 
     render json: @kinds
   end
